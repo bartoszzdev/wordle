@@ -8,6 +8,7 @@ export const TutorialContainer = styled.div`
     height: 100vh;
     background: rgba(18,18,19, 1);
     overflow: hidden;
+    z-index: 1;
 `
 
 export const TutorialElement = styled.article`
@@ -106,5 +107,17 @@ export const TutorialElement = styled.article`
     .word .wrong-letter {
         background: #3a3a3c;
         border: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        .word {
+            margin-bottom: 12px;
+        }
+
+        .word span {
+            width: 40px;
+            height: 40px;
+            font-size: 2rem;
+        }
     }
 `

@@ -2,4 +2,31 @@ const keyValues = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', '
 
 const words = ['FELIZ', 'MUNDO', 'GLOBO', 'PULGA', 'LIVRO', 'SAGAZ', 'TERMO', 'SENSO', 'NOBRE', 'AFETO', 'PLENA', 'SUTIL', 'VIGOR', 'INATO', 'IDEIA', 'PODER', 'MORAL', 'HONRA', 'JUSTO', 'ANEXO', 'ETNIA', 'LAPSO', 'SONHO', 'AMIGO', 'TEMPO', 'EXPOR', 'HAVER', 'TANGE', 'HOTEL', 'TERRA']
 
-export { keyValues, words }
+const defaultData = [
+    {
+      word: [],
+      letterColor: []
+    },
+    {
+      word: [],
+      letterColor: []
+    },
+    {
+      word: [],
+      letterColor: []
+    },
+    {
+      word: [],
+      letterColor: []
+    },
+    {
+      word: [],
+      letterColor: []
+    },
+    {
+      word: [],
+      letterColor: []
+    }
+]
+
+export { keyValues, words, defaultData }

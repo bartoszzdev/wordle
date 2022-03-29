@@ -1,44 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container, Header, AttemptContainer, WordItem, KeyContainer } from './styles.js'
-import { keyValues, words } from './keys'
+import { keyValues, words, defaultData } from './keys'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import { RiExchangeBoxLine } from 'react-icons/ri'
 import MessageElement from '../Message/Message'
 import Tutorial from '../Tutorial/Tutorial'
 
-const randomWord = Math.floor(Math.random() * words.length)
+const randomWord = () => {
+  const wordle = Math.floor(Math.random() * words.length)
+  return words[wordle]
+}
 
 function App() {
-  const [keyWord, setKeyWord] = useState(words[randomWord])
+  const [keyWord, setKeyWord] = useState(randomWord)
   const [keys, setKeys] = useState(keyValues)
   const [keyColor, setKeyColor] = useState([])
   const [index, setIndex] = useState(0)
   const [row, setRow] = useState(0)
-  const [attempts, setAttempts] = useState([
-    {
-      word: [],
-      letterColor: []
-    },
-    {
-      word: [],
-      letterColor: ['','','','','']
-    },
-    {
-      word: [],
-      letterColor: ['','','','','']
-    },
-    {
-      word: [],
-      letterColor: ['','','','','']
-    },
-    {
-      word: [],
-      letterColor: ['','','','','']
-    },
-    {
-      word: [],
-      letterColor: ['','','','','']
-    }
-  ])
+  const [attempts, setAttempts] = useState(defaultData)
   const [isEnterPress, setIsEnterPress] = useState(false)
   const [message, setMessage] = useState('')
   const [showTutorial, setShowTutorial] = useState(false)
@@ -143,14 +122,32 @@ function App() {
     }
   }
 
+  const switchWord = () => {
+    setKeyWord(randomWord)
+
+    setMessage('Palavra substituída')
+    setIsEnterPress(true)
+
+    setIndex(0)
+    setRow(0)
+
+    window.location.reload(false)
+  }
+
   return (
     <Container>
       <Header>
         <h1>Wordle</h1>
 
-        <button type='button' className='open-tutorial' onClick={() => setShowTutorial(true)}>
-          <AiOutlineQuestionCircle />
-        </button>
+        <div>
+          <button type='button' className='open-tutorial' onClick={() => setShowTutorial(true)}>
+            <AiOutlineQuestionCircle />
+          </button>
+
+          <button type='button' className='switch-word' onClick={switchWord}>
+            <RiExchangeBoxLine />
+          </button>
+        </div>
       </Header>
 
       {showTutorial && <Tutorial setShowTutorial={setShowTutorial} />}
@@ -175,7 +172,7 @@ function App() {
       <KeyContainer>
         {keys.map((key, index) => {
           return (
-            <button type='button' key={index} className={keyColor[index]} onClick={() => handleClick(key)}>
+            <button type='button' key={index} className={`${key} ${keyColor[index]}`} onClick={() => handleClick(key)}>
               {key}
             </button>
           )

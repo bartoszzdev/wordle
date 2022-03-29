@@ -10,9 +10,7 @@ function Message({ setIsEnterPress, message }) {
         return () => clearTimeout(timeout)
     }, [])
 
-    return <MessageElement>
-        <span>{message}</span>
-    </MessageElement>
+    return <MessageElement>{message}</MessageElement>
 }
 
 export default Message

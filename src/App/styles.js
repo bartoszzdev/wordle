@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.main`
     width: 100%;
     height: 100vh;
+    padding: 0 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,15 +21,31 @@ export const Header = styled.header`
         font-size: 2.3rem;
     }
 
-    .open-tutorial {
+    div {
+        display: flex;
+        position: absolute;
+        right: 12px;
+    }
+
+    .open-tutorial, .switch-word {
+        margin-left: 10px;
         font-size: 1.7rem;
         font-weight: 600;
         color: #fff;
         background: transparent;
         border: none;
         cursor: pointer;
-        position: absolute;
-        right: 12px;
+    }
+
+    @media screen and (max-width: 500px) {
+        h1 {
+            font-size: 2.1rem;
+        }
+
+        .open-tutorial, .switch-word {
+            margin-left: 5px;
+            font-size: 1.4rem;
+        }
     }
 `
 
@@ -78,10 +95,10 @@ export const KeyContainer = styled.div`
     width: 100%;
     max-width: 510px;
     margin-bottom: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 8px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px 8px;
 
     button {
        min-width: 40px;
@@ -95,6 +112,14 @@ export const KeyContainer = styled.div`
        border: none;
     }
 
+    .A, .S, .D, .F, .G, .H, .J, .K, .L {
+        transform: translateX(50%);
+    }
+
+    .ENTER {
+        grid-column: 1 / 2 span;
+    }
+
     .green-key {
         background: #538d4e;
     }
@@ -105,5 +130,15 @@ export const KeyContainer = styled.div`
     
     .yellow-key {
         background: #b59f3b;
+    }
+
+    @media screen and (max-width: 500px) {
+        grid-gap: 7px 5px;
+
+        button {
+            min-width: 0;
+            padding: 10px 6px;
+            font-weight: 400;
+        }
     }
 `
