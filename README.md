@@ -1,4 +1,4 @@
-# wordle
+# Wordle
 
 - Neste projeto reproduzi o famoso jogo de palavras wordle!
 - Eu trabalhei com React.js!
